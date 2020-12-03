@@ -4,6 +4,11 @@ from copy import copy
 goal_sum = 2020
 
 
+def parse_input(input_file):
+    with open(input_file) as input_data:
+        return [int(line.strip()) for line in input_data]
+
+
 def find_pair(goal: int, input_list: List[int]):
     for expense in input_list:
         pair_value = goal - expense
@@ -28,8 +33,7 @@ def problem_2(input_list: List[int]):
 
 
 if __name__ == "__main__":
-    with open("resources/day_1_input.txt") as data:
-        data = [int(line.strip()) for line in data]
+    data = parse_input("resources/day_1_input.txt")
     result_1 = problem_1(data)
     print(f"Result 1: {result_1}")
 
