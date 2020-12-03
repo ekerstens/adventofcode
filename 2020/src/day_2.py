@@ -3,6 +3,8 @@ from copy import copy
 
 
 class PasswordPolicy(NamedTuple):
+    """Data object to organize password file contents."""
+
     min_: int
     max_: int
     letter: str
@@ -10,6 +12,7 @@ class PasswordPolicy(NamedTuple):
 
 
 def format_line(line):
+    """Convert a single line of text into a PasswordPolicy."""
     line = line.strip()
     policy = PasswordPolicy(
         min_=int(line[0 : line.find("-")]),
@@ -20,21 +23,22 @@ def format_line(line):
     return policy
 
 
-def parse_input(input_file):
+def parse_input(input_file: str) -> List[PasswordPolicy]:
+    """Convert contents of input file to PasswordPolicies."""
     with open(input_file) as input_data:
         return [format_line(line) for line in input_data]
 
 
-def problem_1(input_list: List[int]):
-    def password_okay(policy: PasswordPolicy):
+def problem_1(input_list: List[PasswordPolicy]) -> int:
+    def password_okay(policy: PasswordPolicy) -> bool:
         occurances = policy.password.count(policy.letter)
         return policy.min_ <= occurances <= policy.max_
 
     return sum([password_okay(policy) for policy in input_list])
 
 
-def problem_2(input_list: List[int]):
-    def password_okay(policy: PasswordPolicy):
+def problem_2(input_list: List[PasswordPolicy]) -> int:
+    def password_okay(policy: PasswordPolicy) -> bool:
         return (policy.password[policy.min_ - 1] == policy.letter) ^ (
             policy.password[policy.max_ - 1] == policy.letter
         )
