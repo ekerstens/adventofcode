@@ -1,4 +1,4 @@
-from src.day_2 import Day2
+from src.day2 import Day2
 
 day2 = Day2()
 test_input = ["1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"]

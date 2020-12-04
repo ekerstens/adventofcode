@@ -1,4 +1,4 @@
-from src.day_1 import Day1
+from src.day1 import Day1
 
 day1 = Day1()
 test_input = [1721, 979, 366, 299, 675, 1456]
