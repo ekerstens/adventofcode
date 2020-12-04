@@ -1,6 +1,6 @@
 from typing import List, NamedTuple
 from copy import copy
-from advent_day import AdventDay
+from .advent_day import AdventDay
 from io import TextIOWrapper
 
 
