@@ -3,6 +3,7 @@ from copy import copy
 from .advent_day import AdventDay
 from io import TextIOWrapper
 
+
 goal_sum = 2020
 
 
