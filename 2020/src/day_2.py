@@ -4,6 +4,7 @@ from .advent_day import AdventDay
 from io import TextIOWrapper
 
 
+
 class PasswordPolicy(NamedTuple):
     """Data object to organize password file contents."""
 
