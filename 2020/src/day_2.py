@@ -22,13 +22,12 @@ class Day2(AdventDay):
     def format_line(line):
         """Convert a single line of text into a PasswordPolicy."""
         line = line.strip()
-        policy = PasswordPolicy(
+        return PasswordPolicy(
             min_=int(line[0 : line.find("-")]),
             max_=int(line[line.find("-") + 1 : line.find(" ")]),
             letter=line[line.find(" ") + 1 : line.find(":")],
             password=line[line.find(":") + 2 :],
         )
-        return policy
 
     def parse_input(self, input_data: TextIOWrapper) -> List[PasswordPolicy]:
         """Convert contents of input file to PasswordPolicies."""
