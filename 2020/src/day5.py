@@ -86,7 +86,8 @@ class Day5(AdventDay):
     def problem_1(self, input_data: List[str]) -> int:
         """Find the largest seat code"""
         return max(
-            [self.seat_factory.from_code(seat_code).seat_id for seat_code in input_data]
+            self.seat_factory.from_code(seat_code).seat_id
+            for seat_code in input_data
         )
 
     def problem_2(self, input_data) -> int:
