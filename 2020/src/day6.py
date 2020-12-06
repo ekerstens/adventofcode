@@ -14,10 +14,10 @@ class Day6(AdventDay):
         return [[set(person) for person in group] for group in collapsed_input]
 
     def problem_1(self, input_data: AllGroups) -> int:
-        return sum([len(set.union(*group)) for group in input_data])
+        return sum(len(set.union(*group)) for group in input_data)
 
     def problem_2(self, input_data: AllGroups) -> int:
-        return sum([len(set.intersection(*group)) for group in input_data])
+        return sum(len(set.intersection(*group)) for group in input_data)
 
 
 if __name__ == "__main__":
