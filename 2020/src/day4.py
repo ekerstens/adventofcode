@@ -1,5 +1,6 @@
-from .advent_day import AdventDay
 import re
+from .advent_day import AdventDay
+from .utils import join_lines
 
 
 class Day4(AdventDay):
@@ -9,20 +10,15 @@ class Day4(AdventDay):
 
     def parse_input(self, input_data):
         pattern = r"(?P<key>[^\s]*):(?P<value>[^\s]*)"
-        passports = []
-        passport = {}
-        for line in input_data:
-            if line.strip() == "":
-                passports.append(passport)
-                passport = {}
-            else:
-                # get matches
-                matches = re.finditer(pattern, line)
-                for match in matches:
-                    passport[match.group("key")] = match.group("value")
-        if passport != {}:
-            passports.append(passport)
-        return passports
+        collapsed_input = join_lines(input_data)
+        return [
+            {
+                match.group("key"): match.group("value")
+                for line in passport
+                for match in re.finditer(pattern, line)
+            }
+            for passport in collapsed_input
+        ]
 
     def problem_1(self, input_data):
         def valid_passport(passport):

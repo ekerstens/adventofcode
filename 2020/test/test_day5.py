@@ -1,4 +1,4 @@
-from src.day5 import Day5
+from src.day5 import Day5, Seat
 
 day5 = Day5()
 
@@ -7,7 +7,8 @@ test_data = {"BFFFBBFRRR": 567, "FFFBBBFRRR": 119, "BBFFBBFRLL": 820}
 
 def test_partition_seat():
     for seat_code, seat_id in test_data.items():
-        assert day5.partition_seat(seat_code) == seat_id
+        seat = Seat.from_seat_code(seat_code, 128, 8)
+        assert seat.seat_id == seat_id
 
 
 def test_problem_1():
