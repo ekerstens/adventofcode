@@ -1,26 +1,17 @@
-from .advent_day import AdventDay
 from typing import List, Set
+from .advent_day import AdventDay
+from .utils import join_lines
 
 AllGroups = List[List[Set[str]]]
 
 
 class Day6(AdventDay):
+    "Day6 Submission"
     _day = 6
 
     def parse_input(self, input_data) -> AllGroups:
-        all_groups = []
-        group = []
-        for line in input_data:
-            line = line.strip()
-            if line == "":
-                all_groups.append(group)
-                group = []
-            else:
-                group.append(set(line))
-
-        if group != []:
-            all_groups.append(group)
-        return all_groups
+        collapsed_input = join_lines(input_data)
+        return [[set(person) for person in group] for group in collapsed_input]
 
     def problem_1(self, input_data: AllGroups) -> int:
         return sum([len(set.union(*group)) for group in input_data])
