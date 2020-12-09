@@ -20,7 +20,7 @@ class AdventDay(ABC):
 
     def results(self):
         with open(self.input_file) as input_data:
-            data = self.parse_input(input_data)
+            data = self.parse_input(line.strip() for line in input_data)
         result_1 = self.problem_1(data)
         print(f"Result 1: {result_1}")
 

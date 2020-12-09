@@ -2,6 +2,8 @@ from .advent_day import AdventDay
 
 
 class DayX(AdventDay):
+    """DayX Submission"""
+
     _day = X
 
     def parse_input(self, input_data):
