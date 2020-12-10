@@ -1,9 +1,6 @@
 from typing import List
-from math import prod
 from collections import Counter
 from .advent_day import AdventDay
-
-from pprint import pprint
 
 
 class Day10(AdventDay):
@@ -31,7 +28,8 @@ class Day10(AdventDay):
             if start + inc in adapter_ratings
         )
 
-    def count_combinations_non_recursive(self, adapter_ratings):
+    @staticmethod
+    def count_combinations_non_recursive(adapter_ratings):
         """
         Counting all the branches recursively is very slow. From any single point n in
         the list the exact number of diret branches from point n is determined by
